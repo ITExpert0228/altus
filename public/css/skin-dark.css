@@ -1,0 +1,482 @@
+/*common style*/
+
+body.skin-dark {
+    color: #aaa;
+    background-color: #141414;
+}
+
+.skin-dark.home_seven,
+.skin-dark.home_seven .header-mid,
+.skin-dark.home_seven nav.navbar.bootsnav,
+.skin-dark.boxed-layout,
+.skin-dark.boxed-layout .header-mid,
+.skin-dark.boxed-layout nav.navbar.bootsnav,
+.skin-dark.boxed-layout .wrapper {
+    background-color: #2a292d;
+}
+
+
+
+/*color*/
+
+.skin-dark a,
+.skin-dark .title,
+.skin-dark .page-title h1,
+.skin-dark .filter-nav ul a,
+.skin-dark .post-footer .more-btn,
+.skin-dark .post-head .title,
+.skin-dark .panel_header h4,
+.skin-dark .games-result-title,
+.skin-dark .table > thead > tr > th,
+.skin-dark .weather-week .list-group-item,
+.skin-dark .social-media li .rss,
+.skin-dark .nav-tabs > li.active > a,
+.skin-dark .nav-tabs > li.active > a:focus,
+.skin-dark .nav-tabs > li.active > a:hover,
+.skin-dark .social-media li .fb,
+.skin-dark .social-media li .g_plus,
+.skin-dark .social-media li .you_tube,
+.skin-dark .social-media li .twitter,
+.skin-dark .social-media li .pint,
+.skin-dark .games-result-score,
+.skin-dark .games-result-team-name,
+.skin-dark .games-result-score-label,
+.skin-dark .ui-widget-content,
+.skin-dark .ui-datepicker .ui-datepicker-title,
+.skin-dark .ui-datepicker .ui-datepicker-title,
+.skin-dark .ui.tag,
+.skin-dark .ui.tag:hover,
+.skin-dark .pagination > li > a:focus,
+.skin-dark .pagination > li > a:hover,
+.skin-dark .pagination > li > span:focus,
+.skin-dark .pagination > li > span:hover,
+.skin-dark .pagination > .disabled > a,
+.skin-dark .pagination > .disabled > a:focus,
+.skin-dark .pagination > .disabled > a:hover,
+.skin-dark .pagination > .disabled > span,
+.skin-dark .pagination > .disabled > span:focus,
+.skin-dark .pagination > .disabled > span:hover,
+.skin-dark .poll-content h6,
+.skin-dark .header-right-menu > ul > li > a,
+.skin-dark .post_details_block h2,
+.skin-dark .customers,
+.skin-dark  .comments-container h3, 
+.skin-dark .comment-form h3,
+h1, h2, h3, h4, h5, h6, a{
+    color: #fff;
+}
+
+
+/*background color*/
+
+.skin-dark .featured-inner,
+.skin-dark .post-body,
+.skin-dark .youtube-wrapper,
+.skin-dark .add-inner,
+.skin-dark .archive-wrapper,
+.skin-dark .post-head,
+.skin-dark .post-footer,
+.skin-dark .panel_inner,
+.skin-dark .posts,
+.skin-dark .tabs-wrapper,
+.skin-dark .weather-wrapper,
+.skin-dark .post_details_block,
+.skin-dark .comments-container,
+.skin-dark .comment-form,
+.skin-dark footer,
+.skin-dark .panel,
+.skin-dark .panel-body{
+    background-color: #2a292d;
+    /*background-color: #2d2c32;*/
+}
+
+.skin-dark .post-head,
+.skin-dark .panel_header,
+.skin-dark .post-grid,
+.skin-dark .cd-main-header,
+.skin-dark .ui-datepicker .ui-datepicker-header,
+.skin-dark .table > thead > tr > th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark.home_seven .post-head,
+.skin-dark.home_seven .panel_header {
+    padding: 0 0 10px;
+    border-bottom: 2px solid #eb0254;
+}
+
+.skin-dark .post-grid:last-child {
+    border-bottom: 0;
+}
+
+.skin-dark .post-footer,
+.skin-dark .cd-main-header,
+.skin-dark .posts__footer,
+.skin-dark .table > tbody > tr > td,
+.skin-dark .table > tbody > tr > th,
+.skin-dark .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .table-bordered,
+.skin-dark .table-bordered>tbody>tr>td,
+.skin-dark .table-bordered>tbody>tr>th,
+.skin-dark .table-bordered>tfoot>tr>td,
+.skin-dark .table-bordered>tfoot>tr>th,
+.skin-dark .table-bordered>thead>tr>td,
+.skin-dark .table-bordered>thead>tr>th{
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark.home_seven .post-footer,
+.skin-dark.home_seven .posts__footer {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.skin-dark .post-footer .social,
+.skin-dark .most-viewed .content li .text {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark.home_six .featured-inner, 
+.skin-dark.home_six .post-inner, 
+.skin-dark.home_six .add-inner, 
+.skin-dark.home_six .weather-wrapper, 
+.skin-dark.home_six .tabs-wrapper,
+.skin-dark.home_six .posts,
+.skin-dark.home_six .panel_inner,
+.skin-dark.home_six .archive-wrapper,
+.skin-dark.home_six .weather-wrapper-2 {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.card-post .post-grid {
+    border: 0;
+}
+
+
+/*top ber*/
+
+.skin-dark .header-top {
+    background: #eb0254;
+}
+
+.skin-dark .header-social > ul > li > a {
+    opacity: 1;
+}
+
+.skin-dark .top-left-menu > ul > li > a{
+    border-left: 1px solid rgba(255,255,255,0.5);
+}
+.skin-dark .header-right-menu > ul > li{
+    border-right: 1px solid rgba(255,255,255,0.5);
+}
+
+.skin-dark .article_comment,
+.skin-dark .header-mid{
+    background-color: #141414;
+}
+
+/*navber*/
+
+.skin-dark nav.navbar.bootsnav {
+    border: 0;
+    background-color: #141414;
+}
+
+@media (max-width: 992px) {
+    .skin-dark nav.navbar.bootsnav.navbar-mobile .navbar-collapse {
+        background: #fff;
+    }
+    .skin-dark nav.navbar.bootsnav ul.nav > li > a {
+        color: #111;
+    }
+    nav.navbar.bootsnav .navbar-toggle {
+        color: #fff;
+        background-color: transparent;
+    }
+
+}
+@media (min-width: 993px) {
+    .skin-dark nav.navbar.bootsnav ul.nav > li,
+    .skin-dark nav.navbar.bootsnav ul.nav > li:last-child {
+        border: 0;
+    }
+    .skin-dark nav.navbar.bootsnav ul.nav > li > a {
+        color: #fff;
+    }
+    .skin-dark nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+        background-color: #2a292d;
+    }
+    .skin-dark .video-nav-item h4 ,
+    .skin-dark nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a,
+    .skin-dark nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a{
+        color: #fff;
+    }
+    .skin-dark nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a {
+        border-bottom: solid 1px #383838;
+    }
+    .skin-dark nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li.active > a, nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover {
+        background: #333235;
+    }
+    .skin-dark nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .col-menu {
+        border-left: solid 1px #383838;
+        border-right: solid 1px #383838;
+    }
+}
+
+/*breadcrumb*/
+.breadcrumb {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/*newstricker*/
+
+.skin-dark #NewsTicker.owl-theme .owl-controls .owl-buttons div,
+.skin-dark #post-slider.owl-theme .owl-controls .owl-buttons div,
+.skin-dark #post-slider-2.owl-theme .owl-controls .owl-buttons div,
+.skin-dark #post-slider-3.owl-theme .owl-controls .owl-buttons div {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.skin-dark .trending {
+    background-color: #eb0254;
+}
+
+.skin-dark .trending:after {
+    border-left: 8px solid #eb0254;
+}
+
+
+/*post*/
+
+.skin-dark .filter-nav ul a:hover,
+.skin-dark .filter-nav ul a.active {
+    color: #eb0254;
+}
+
+.skin-dark .news-list-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .news-list-item:first-child {
+    padding-top: 0;
+}
+
+.skin-dark .news-list-item:last-child {
+    border-bottom: 0;
+}
+
+.skin-dark .post-footer .more-btn:hover {
+    color: #eb0254;
+}
+
+.skin-dark .bord-right {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .post-footer .social ul li a {
+    color: rgba(215, 215, 215, 0.4);
+}
+
+
+/*.skin-dark .post-footer .social i:hover {
+    color: #eb0254;
+}*/
+
+
+/*Weather*/
+
+.skin-dark .weather-week .list-group-item {
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .weather-week .list-group a:first-child,
+.skin-dark .weather-week .list-group a:last-child {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .weather-temp-wrap {
+    color: #fff !important;
+}
+
+.skin-dark .weather-week .list-group > a.active,
+.skin-dark .weather-week .list-group > a.active .glyphicon,
+.skin-dark .weather-week .list-group > a.active .fa {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+}
+
+
+/*tab*/
+
+.skin-dark .nav-tabs > li > a {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .nav-tabs > li > a:hover {
+    background-color: #00A800;
+}
+
+.skin-dark .nav-tabs > li.active > a,
+.skin-dark .nav-tabs > li.active > a:focus,
+.skin-dark .nav-tabs > li.active > a:hover {
+    background-color: #008900;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .most-viewed .content li,
+.skin-dark .p-post {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .most-viewed .content li:last-child,
+.skin-dark .p-post:last-child {
+    border: 0;
+}
+
+.skin-dark .most-viewed .content li .text a:hover {
+    color: #008900;
+}
+
+.skin-dark .reatting-2 i {
+    color: #008900;
+}
+
+
+/*social icon*/
+
+.skin-dark .social-media li .rss {
+    background-color: #ff680d;
+}
+
+.skin-dark .social-media li .fb {
+    background-color: #4c66a3;
+}
+
+.skin-dark .social-media li .g_plus {
+    background-color: #cf3e28;
+}
+
+.skin-dark .social-media li .you_tube {
+    background-color: #e42c27;
+}
+
+.skin-dark .social-media li .twitter {
+    background-color: #2fc2ee;
+}
+
+.skin-dark .social-media li .pint {
+    background-color: #cb2028;
+}
+
+
+/*Last Game Results*/
+
+.skin-dark .table > thead > tr > th {
+    background-color: transparent;
+}
+
+
+/*archive*/
+
+.skin-dark .ui-widget.ui-widget-content {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skin-dark .ui-state-default,
+.ui-widget-content .ui-state-default {
+    background: transparent;
+    color: #aaa;
+}
+
+
+/*pool*/
+
+
+/*tags*/
+
+.skin-dark .ui.tag {
+    background-color: #4c66a3;
+}
+
+.skin-dark .ui.tag:hover {
+    background-color: #eb0254;
+}
+
+
+/*pagination*/
+
+.skin-dark .pagination > li > a,
+.skin-dark .pagination > li > span {
+    background-color: transparent;
+}
+
+.skin-dark .pagination > li > a:focus,
+.skin-dark .pagination > li > a:hover,
+.skin-dark .pagination > li > span:focus,
+.skin-dark .pagination > li > span:hover {
+    background-color: #eb0254;
+    border-color: #eb0254;
+}
+
+.skin-dark .pagination > .active > a,
+.skin-dark .pagination > .active > a:focus,
+.skin-dark .pagination > .active > a:hover,
+.skin-dark .pagination > .active > span,
+.skin-dark .pagination > .active > span:focus,
+.skin-dark .pagination > .active > span:hover {
+    background-color: #eb0254;
+    border-color: #eb0254;
+}
+
+.skin-dark .pagination > .disabled > a,
+.skin-dark .pagination > .disabled > a:focus,
+.skin-dark .pagination > .disabled > a:hover,
+.skin-dark .pagination > .disabled > span,
+.skin-dark .pagination > .disabled > span:focus,
+.skin-dark .pagination > .disabled > span:hover {
+    cursor: not-allowed;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/*Hot Categories*/
+
+.skin-dark ul.category-list li a span {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/*form*/
+.skin-dark .comment-form .form-control {
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+}
+
+.skin-dark .comment-form .form-control:focus{
+    border-color: #eb0254;
+}
+
+/*footer*/
+
+.skin-dark .sub-footer {
+    background-color: #eb0254;
+}
+
+.home_seven.skin-dark footer::before {
+    content: '';
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 0;
+    width: 54.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
