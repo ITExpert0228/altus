@@ -12,7 +12,11 @@ var FrontcmsSchema = new Schema({
     content: {
         type: String,
         default:''
-        }
+        },
+    img:{
+        type: Array,
+        default: []
+       }    
 });
 FrontcmsSchema.set("toJSON", {virtuals: true});
 FrontcmsSchema.set("toObject", {virtuals: true});

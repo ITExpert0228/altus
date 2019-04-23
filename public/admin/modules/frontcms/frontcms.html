@@ -40,19 +40,17 @@
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    <div class="container-fluid"   >
+    <div class="container-fluid" ng-controller="frontcmsCtrl" ng-init="frontcmsinit()">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">FrontPage CMS</h4>
-                            <div class="modal-content" ng-controller="frontcmsCtrl" ng-init="frontcmsinit()">
-                                <form>
-                                 <div class="modal-body">
+                            <div class="modal-content" >
+                                <div class="modal-body">
                                     <div class="col-xlg-12 col-lg-12 col-md-12 bg-light-part b-l">
                                         <div class="card-body">
-                                            
-                                            <div class="form-group">
+                                           <div class="form-group">
                                                 <input class="form-control" ng-model="frontcmstitle" placeholder="To:">
                                             </div>
                                             <div class="form-group">
@@ -61,33 +59,59 @@
                                             <div class="form-group">
                                                 <textarea id="frontcmscontent"  name="frontcmscontent" ng-model="frontcmscontent" ng-bind-html="trustedHtml" class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea>
                                             </div>
-                                            
-                                        </div>
-                                        <div class="modal-footer">
+                                            <div class="modal-footer">
                                                 <input type="button" id="closemodal1" class="btn-sm btn btn-default waves-effect" ng-click="resetContent()" style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Cancel"/>
                                                 <input type="button" id="savemodal" class="btn-sm btn waves-effect waves-light" ng-click="saveContent()" style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Save"/>
                                             </div>
+                                            <form>  
+                                            <div class="form-group">
+                                                <h4 class="card-title">Image File Upload</h4>
+                                                <div class="row">
+                                                <div class="col-lg-2 col-md-2">
+                                                <input type="file" name="fileupload1" id="fileupload1" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image1}}" />
+                                                </div>
+                                                <div class="col-lg-2 col-md-2">
+                                                <input type="file" name="fileupload2"  id="fileupload2" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image2}}" />
+                                                </div>
+                                                <div class="col-lg-2 col-md-2">
+                                                <input type="file" name="fileupload3"  id="fileupload3" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image3}}" />
+                                                </div>
+                                                <div class="col-lg-2 col-md-2">
+                                                <input type="file" name="fileupload4"  id="fileupload4" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image4}}" />
+                                                </div>
+                                                <div class="col-lg-2 col-md-2">
+                                                <input type="file" name="fileupload5"  id="fileupload5" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image5}}" />
+                                                </div>
+                                                <div class="col-lg-2 col-md-2">
+                                                <input type="file" name="fileupload6"  id="fileupload6" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image6}}" />
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="reset" id="closemodal2" class="btn-sm btn btn-default waves-effect"  style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Cancel"/>
+                                                <input type="button" id="savemodal2" class="btn-sm btn waves-effect waves-light" ng-click="saveImage()" style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Save"/>
+                                            </div>
+                                        </form>    
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                            <!-- Modal -->
-                            <div class="myalertpopup-overlay">
-                                <!--Creates the popup content-->
-                                <div class="myalertpopup-content">
-                                    <h3>Data Save State</h3>
-                                    <h3> {{datasavestate}}</h3>
-                                <!--popup's close button-->
-                                <input type="button" id="close" class="lg-btn-custom" style="width:50px " name="close" ng-click="saveok()" value="ok"/>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
+                 
+                                
                 </div>
-         </div>
+                <!-- Modal -->
+                <div class="myalertpopup-overlay">
+                    <div class="myalertpopup-content">
+                        <h3>Data Save State</h3>
+                        <h3>"Your Data Has Saved Correctly in Server."</h3>
+                        <input type="button" id="close" class="lg-btn-custom" style="width:50px " name="close" ng-click="saveok()" value="ok"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-        <footer class="footer"> ©2019 AltusEntertainment. All rights reserved. </footer>
-</div> 
-
+ </div>
+    
 
 

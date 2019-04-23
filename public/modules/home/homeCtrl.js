@@ -1,4 +1,4 @@
-app.controller('homeController',['$scope','$rootScope', '$sce', 'homeService', function($scope, $rootScope,$sce,homeService) {
+app.controller('homeController',['$scope','$rootScope', '$sce','$location', 'homeService', function($scope, $rootScope,$sce,$location,homeService) {
    
     $scope.homeinit=function(){
         angular.element(document.querySelector("#Category")).removeClass("open");
@@ -9,10 +9,18 @@ app.controller('homeController',['$scope','$rootScope', '$sce', 'homeService', f
             if(data!=undefined){
                 $scope.id=data[0]._id;
                 $scope.hometitle=data[0].title;
+                $scope.images=data[0].img;
+                $scope.slider1="uploads/"+data[0].img[0];
+                $scope.slider2="uploads/"+data[0].img[1];
+                $scope.slider3="uploads/"+data[0].img[2];
+                $scope.slider4="uploads/"+data[0].img[3];
+                $scope.slider5="uploads/"+data[0].img[4];
+                $scope.slider6="uploads/"+data[0].img[5];
                 $scope.frontcms_entertainment= $sce.trustAsHtml(data[0].content);
                 console.log( $scope.frontcms_entertainment);
+                $location.path("/");
                // var html = $compile($scope.frontcms_entertainment)($scope);
-//angular.element(document.getElementById("#frontcms_entertainment")).append(html);
+                //angular.element(document.getElementById("#frontcms_entertainment")).append(html);
             }
           }, function(err) {
               console.log(err);
@@ -23,9 +31,9 @@ app.controller('homeController',['$scope','$rootScope', '$sce', 'homeService', f
      $scope.$on('$viewContentLoaded', function(){
          
            
-         $(function() {
-             $('.gallery a').lightbox(); 
-             });
+        $(function() {
+            $('.gallery a').lightbox(); 
+            });
          $(document).ready(function () {
            
            //Skyicon
