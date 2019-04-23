@@ -1,4 +1,4 @@
-app.controller('frontcmsCtrl',['$scope', '$location','frontcmsService','$rootScope','authService', function($scope,$location, frontcmsService,$rootScope,authService) {
+app.controller('frontcmsCtrl',['$scope', '$location','frontcmsService','$rootScope','authService', function($scope, $location, frontcmsService,$rootScope,authService) {
  
     $scope.$on('$viewContentLoaded', function(){
         $(document).ready(function() {
@@ -20,6 +20,7 @@ app.controller('frontcmsCtrl',['$scope', '$location','frontcmsService','$rootSco
               $scope.frontcmscontent=data[0].content;
               $scope.tmpfronttitle=data[0].title;
               $scope.tmpfrontcmscontent=data[0].content;
+             // $scope.frontcmscontent = $sce.trustAsHtml($scope.frontcmscontent);
           }
         }, function(err) {
             console.log(err);
