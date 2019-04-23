@@ -57,17 +57,17 @@ var AltusdbSchema = new Schema({
     },
     PreviousClients: {
         type: String,
-        required: true,
+        default: '',
         
     },
     Testimonials: {
         type: String,
-        required: true,
+        default: '',
      
     },
     SetList: {
         type: String,
-        required: true,
+        default: '',
         
     }
 });

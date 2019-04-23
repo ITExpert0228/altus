@@ -29,7 +29,9 @@ exports.entertainment_details = function (req, res) {
 };
 exports.entertainment_all = function (req, res) {
     Altusdb.find({}).then((entertainment) => {
-        for(var i=0; i<entertainment.length;i++)
+      //  for(var i=0; i<entertainment.length;i++)
+        var entertainment_temp=[];
+        for(var i=0; i<120;i++)
         {
             if(entertainment[i].title==null){entertainment[i].title='';}
             if(entertainment[i].profileimage==null){entertainment[i].profileimage='';}
@@ -44,10 +46,14 @@ exports.entertainment_all = function (req, res) {
             if(entertainment[i].Biography==null){entertainment[i].Biography='';}
             if(entertainment[i].PreviousClients==null){entertainment[i].PreviousClients='';}    
             if(entertainment[i].Testimonials==null){entertainment[i].Testimonials='';}    
-            if(entertainment[i].SetList==null){entertainment[i].SetList='';}   
+            if(entertainment[i].SetList==null){entertainment[i].SetList='';}
+            entertainment_temp.push(entertainment[i]);   
      //       console.log(i+":"+entertainment[i]); 
         }
-        var obj = {  data: entertainment };
+        console.log(entertainment_temp);
+       // res.setHeader('Content-Type', 'application/json');
+      //  res.status(200).send(JSON.stringify(entertainment));
+        var obj = {  data: entertainment_temp };
    //     console.log(JSON.stringify(obj));
          res.status(200).send(JSON.stringify(obj));
     }).catch((err) => {
@@ -75,8 +81,10 @@ exports.entertainment_alls = function (req, res) {
             if(entertainment[i].SetList==null){entertainment[i].SetList='';}
             console.log(i+":"+entertainment[i]);    
         }
-        //console.log(entertainment);
-         res.status(200).send(entertainment);
+       // console.log(entertainment);
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).send(JSON.stringify(entertainment));
+      //  res.status(200).send(entertainment);
      }).catch((err) => {
          res.status(404).send();
     });
@@ -150,11 +158,13 @@ exports.entertainment_save = function (req, res,next) {
     var id;
     var profileimage;
     var profileurl;
-    var tag;
-    var reason;
-    var vediosrc;
-    var images;
+    var eventstype=[];
+    var tag=[];
+    var reason=[];
+    var vediosrc=[];
+    var images=[];
     var Biography;
+    var reasontobook;
     var PreviousClients;
     var Testimonials;
     var SetList;
@@ -164,9 +174,10 @@ exports.entertainment_save = function (req, res,next) {
     for (x in buf_entertainment) {
        
             if (x.includes("action")&&(buf_entertainment[x]!='')){action=buf_entertainment[x]; }
+            if (x.includes("_id")&&(buf_entertainment[x]!='')){ id=buf_entertainment[x];}
             if(action!='remove')
             {
-                if (x.includes("_id")&&(buf_entertainment[x]!='')){ id=buf_entertainment[x];}
+                
                
                 if (x.includes("title"))
                 { 
@@ -185,6 +196,16 @@ exports.entertainment_save = function (req, res,next) {
                         profileimage=buf_entertainment[x];
                     }else{
                         var message= {"fieldErrors":[{"name":"profileimage","status":"profileimage is Not a valid"}],"data":[]};
+                        res.status(200).send(message);
+                        return false;
+                    }
+                }
+                if (x.includes("reasontobook"))
+                {
+                    if(buf_entertainment[x]!=''){
+                        reasontobook=buf_entertainment[x];
+                    }else{
+                        var message= {"fieldErrors":[{"name":"reasontobook","status":"reasontobook is Not a valid"}],"data":[]};
                         res.status(200).send(message);
                         return false;
                     }
@@ -316,29 +337,35 @@ exports.entertainment_save = function (req, res,next) {
             }*/
         }
        
-    var entertainment = new Altusdb(
-        {   
-           title:title,
-            profileurl:profileurl,
-            tag:tag,
-            eventstype:eventstype,
-            reason:reason,
-            location:location,
-            vediosrc:vediosrc,
-            images:images,
-            Biography:Biography,
-            PreviousClients:PreviousClients,
-            Testimonials:Testimonials,
-            SetList:SetList
-        }
-    );
-    console.log("entertainment:"+entertainment);
+ 
+    console.log("entertainment:  "+id);
     if(action=="create"){
+        var entertainment = new Altusdb(
+            {   
+               title:title,
+                profileurl:profileurl,
+                tag:tag,
+                profileimage:profileimage,
+                eventstype:eventstype,
+                reason:reason,
+                reasontobook:reasontobook,
+                location:location,
+                vediosrc:vediosrc,
+                images:images,
+                Biography:Biography,
+                PreviousClients:PreviousClients,
+                Testimonials:Testimonials,
+                SetList:SetList
+            }
+        );
+        console.log("entertainment:  "+entertainment);
         entertainment.save(function (err, nentertainment) {
+           
             if (err) {
                 return next(err);
-            }
-           var retArr = [nentertainment];
+            } 
+            console.log("nentertainment:"+entertainment);
+           var retArr = [entertainment];
             res.status(200).send(JSON.stringify({data:retArr}));
             // res.send('entertainment Created successfully');
         })
@@ -367,6 +394,7 @@ exports.entertainment_save = function (req, res,next) {
             })
         });
     }else if(action=="remove"){
+        console.log("id:"+id);
         Altusdb.findByIdAndRemove(id, function (err) {
             if (err) return next(err);
             var retArr = [];

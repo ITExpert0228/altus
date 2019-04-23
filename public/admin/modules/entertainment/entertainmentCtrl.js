@@ -26,6 +26,10 @@ app.controller('entertainmentCtrl',['$scope','$timeout', 'entertainmentService',
                 '<td>'+d.reason+'</td>'+
             '</tr>'+
             '<tr>'+
+            '<td>reasontobook:</td>'+
+            '<td>'+d.reasontobook+'</td>'+
+            '</tr>'+
+            '<tr>'+
                 '<td>location:</td>'+
                 '<td>'+d.location+'</td>'+
             '</tr>'+
@@ -90,7 +94,12 @@ app.controller('entertainmentCtrl',['$scope','$timeout', 'entertainmentService',
                 label: "reason:",
                 name: "reason",
                 type: "textarea"
-                }, {
+                },
+                 {
+                    label: "reasontobook:",
+                    name: "reasontobook",
+                    type: "textarea"
+                    }, {
                 label: "location:",
                 name: "location",
                 type: "textarea"
