@@ -63,7 +63,7 @@ app.controller('entertainmentAllController',['$scope','$rootScope', '$routeParam
         
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');
-            })
+            });
 
          setTimeout(function(){  
         

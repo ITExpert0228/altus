@@ -76,7 +76,7 @@
         <script src="/modules/signup/signupService.js"></script>
         <script src="/modules/home/homeCtrl.js"></script>
         <script src="/modules/home/homeService.js"></script>
- <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+
    <!-- add this -->
 
     </head>
