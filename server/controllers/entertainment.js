@@ -31,7 +31,7 @@ exports.entertainment_all = function (req, res) {
     Altusdb.find({}).then((entertainment) => {
       //  for(var i=0; i<entertainment.length;i++)
         var entertainment_temp=[];
-        for(var i=0; i<120;i++)
+        for(var i=0; i<12000;i++)
         {
             if(entertainment[i].title==null){entertainment[i].title='';}
             if(entertainment[i].profileimage==null){entertainment[i].profileimage='';}
