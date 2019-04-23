@@ -45,7 +45,7 @@ exports.entertainment_all = function (req, res) {
             if(entertainment[i].PreviousClients==null){entertainment[i].PreviousClients='';}    
             if(entertainment[i].Testimonials==null){entertainment[i].Testimonials='';}    
             if(entertainment[i].SetList==null){entertainment[i].SetList='';}   
-            console.log(i+":"+entertainment[i]); 
+     //       console.log(i+":"+entertainment[i]); 
         }
         var obj = {  data: entertainment };
    //     console.log(JSON.stringify(obj));
