@@ -29,6 +29,24 @@ exports.entertainment_details = function (req, res) {
 };
 exports.entertainment_all = function (req, res) {
     Altusdb.find({}).then((entertainment) => {
+        for(var i=0; i<entertainment.length;i++)
+        {
+            if(entertainment[i].title==null){entertainment[i].title='';}
+            if(entertainment[i].profileimage==null){entertainment[i].profileimage='';}
+            if(entertainment[i].reasontobook==null){entertainment[i].reasontobook='';}
+            if(entertainment[i].profileurl==null){entertainment[i].profileurl='';}
+            if(entertainment[i].tag==null){entertainment[i].tag=[];}
+            if(entertainment[i].eventstype==null){entertainment[i].eventstype=[];}
+            if(entertainment[i].reason==null){entertainment[i].reason=[];}
+            if(entertainment[i].location==null){entertainment[i].location=[];}  
+            if(entertainment[i].vediosrc==null){entertainment[i].vediosrc=[];}
+            if(entertainment[i].images==null){entertainment[i].images=[];}  
+            if(entertainment[i].Biography==null){entertainment[i].Biography='';}
+            if(entertainment[i].PreviousClients==null){entertainment[i].PreviousClients='';}    
+            if(entertainment[i].Testimonials==null){entertainment[i].Testimonials='';}    
+            if(entertainment[i].SetList==null){entertainment[i].SetList='';}   
+            console.log(i+":"+entertainment[i]); 
+        }
         var obj = {  data: entertainment };
    //     console.log(JSON.stringify(obj));
          res.status(200).send(JSON.stringify(obj));
@@ -39,6 +57,24 @@ exports.entertainment_all = function (req, res) {
 };
 exports.entertainment_alls = function (req, res) {
     Altusdb.find({}).then((entertainment) => {
+        for(var i=0; i<entertainment.length;i++)
+        {
+            if(entertainment[i].title==null){entertainment[i].title='';}
+            if(entertainment[i].profileimage==null){entertainment[i].profileimage='';}
+            if(entertainment[i].reasontobook==null){entertainment[i].reasontobook='';}
+            if(entertainment[i].profileurl==null){entertainment[i].profileurl='';}
+            if(entertainment[i].tag==null){entertainment[i].tag=[];}
+            if(entertainment[i].eventstype==null){entertainment[i].eventstype=[];}
+            if(entertainment[i].reason==null){entertainment[i].reason=[];}
+            if(entertainment[i].location==null){entertainment[i].location=[];}  
+            if(entertainment[i].vediosrc==null){entertainment[i].vediosrc=[];}
+            if(entertainment[i].images==null){entertainment[i].images=[];}  
+            if(entertainment[i].Biography==null){entertainment[i].Biography='';}
+            if(entertainment[i].PreviousClients==null){entertainment[i].PreviousClients='';}    
+            if(entertainment[i].Testimonials==null){entertainment[i].Testimonials='';}    
+            if(entertainment[i].SetList==null){entertainment[i].SetList='';}
+            console.log(i+":"+entertainment[i]);    
+        }
         //console.log(entertainment);
          res.status(200).send(entertainment);
      }).catch((err) => {

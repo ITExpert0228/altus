@@ -61,9 +61,6 @@ exports.frontcms_setalls = function (req, res) {
 };
 
 exports.frontcms_update = function (req, res,next) {
-
-    console.log("dddddddddddddddd"+req.body.content);
-    console.log("dddddddddddddddd"+req.params.id);
     Frontcms.findByIdAndUpdate(req.params.id, {$set: {title:req.body.content.title,content:req.body.content.content}}, function (err, frontcms) {
         if (err) return next(err);
         res.send('Frontcms udpated.');
@@ -71,8 +68,6 @@ exports.frontcms_update = function (req, res,next) {
 };
 
 exports.frontcms_updateimages = function (req, res,next) {
-
-   
     Frontcms.findById(req.params.id, function (err, frontcms) {
         for (i = 0; i < req.body.content.img.length; i++) { 
             if(req.body.content.img[i]!=null)
@@ -80,7 +75,6 @@ exports.frontcms_updateimages = function (req, res,next) {
                 frontcms.img[i]=req.body.content.img[i];
             }
           }
-          console.log("dddddddddddddddd"+ frontcms.img);
     Frontcms.findByIdAndUpdate(req.params.id, {$set: {img:frontcms.img}}, function (err, frontcms) {
         if (err) return next(err);
         res.send('Frontcms udpated.');
