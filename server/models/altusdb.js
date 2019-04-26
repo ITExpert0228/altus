@@ -42,6 +42,11 @@ var AltusdbSchema = new Schema({
         required: true,
        
     },
+    popular: {
+        type: Number,
+      default:0
+       
+    },
      vediosrc: {
         type: Array,
         default: []

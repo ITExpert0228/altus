@@ -98,7 +98,7 @@ app.controller('AuthCtrl', ['$scope', '$rootScope', '$cookieStore', '$location',
     // }
     $scope.logout = function() {
         authService.logout().then(function() {
-            window.location.href = '/admin/login';
+            $location.path('/admin/login');
         });
     }
     $scope.initLoginVariables = function() {

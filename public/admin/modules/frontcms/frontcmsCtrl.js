@@ -167,7 +167,8 @@ app.controller('frontcmsCtrl',['$scope', '$location','frontcmsService','$rootSco
    }
    $scope.logout = function() {
     authService.logout().then(function() {
-        window.location.href = '/admin/login';
+        $location.path('/admin/login');
+        //window.location.href = '/admin/login';
     });
     }
    $scope.resetContent=function(){

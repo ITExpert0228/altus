@@ -1,6 +1,11 @@
-<aside class="left-sidebar">
+<aside class="left-sidebar" >
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
+            <div class="user-profile">
+                    <!-- User profile image -->
+                    <div > <img style="width:230px; padding:20px" src="/images/logo.png"  />
+                    </div>
+            </div>
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
@@ -59,7 +64,7 @@
                                             <div class="form-group">
                                                 <textarea id="frontcmscontent"  name="frontcmscontent" ng-model="frontcmscontent" ng-bind-html="trustedHtml" class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer" style="padding-top: 0px;">
                                                 <input type="button" id="closemodal1" class="btn-sm btn btn-default waves-effect" ng-click="resetContent()" style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Cancel"/>
                                                 <input type="button" id="savemodal" class="btn-sm btn waves-effect waves-light" ng-click="saveContent()" style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Save"/>
                                             </div>
@@ -86,7 +91,7 @@
                                                 <input type="file" name="fileupload6"  id="fileupload6" accept="image/*" class="dropify" data-max-file-size="20M" data-height="200" data-default-file="{{image6}}" />
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer" >
                                                 <input type="reset" id="closemodal2" class="btn-sm btn btn-default waves-effect"  style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Cancel"/>
                                                 <input type="button" id="savemodal2" class="btn-sm btn waves-effect waves-light" ng-click="saveImage()" style="font-size: 12px;color:black;font-weight:700;background-color: #1976d2;" value="Save"/>
                                             </div>

@@ -21,7 +21,7 @@ exports.entertainment_create = function (req, res) {
     })
 };
 
-exports.entertainment_details = function (req, res) {
+exports.entertainment_details = function (req, res,next) {
     Altusdb.findById(req.params.id, function (err, entertainment) {
         if (err) return next(err);
         res.send(entertainment);
@@ -31,7 +31,7 @@ exports.entertainment_all = function (req, res) {
     Altusdb.find({}).then((entertainment) => {
       //  for(var i=0; i<entertainment.length;i++)
         var entertainment_temp=[];
-        for(var i=0; i<12000;i++)
+        for(var i=0; i<5267;i++)
         {
             if(entertainment[i].title==null){entertainment[i].title='';}
             if(entertainment[i].profileimage==null){entertainment[i].profileimage='';}
@@ -90,7 +90,33 @@ exports.entertainment_alls = function (req, res) {
     });
 
 };
-exports. entertainment_allsbycate = function (req, res) {
+
+
+
+exports.entertainment_allsbycateforlocation = function (req, res) {
+    var showlocation = req.query.showlocation;
+    console.log("showlocation:"+showlocation);
+    Altusdb.find({}).then((entertainment) => {
+        //  for(var i=0; i<entertainment.length;i++)
+          var entertainment_temp=[];
+          var str='';
+          for(var i=0; i<entertainment.length;i++)
+          {
+            if(entertainment[i].location!=null){
+              str=entertainment[i].location;
+              if( str.search(showlocation)>-1)
+                  entertainment_temp.push(entertainment[i]);   
+                }
+            }
+          console.log(entertainment_temp);
+           res.status(200).send(JSON.stringify(entertainment_temp));
+      }).catch((err) => {
+           res.status(404).send();
+      });
+};
+
+
+exports.entertainment_allsbycate = function (req, res) {
     var showcate = req.query.showcate;
     console.log("aaaaaa"+showcate);
         Altusdb.find({
@@ -111,17 +137,22 @@ exports. entertainment_allsbycate = function (req, res) {
     
 
 };
-exports. entertainment_allsbyid = function (req, res) {
+exports. entertainment_allsbyid = function (req, res,next) {
     var id = req.query.id;
     console.log("aaaaaa"+id);
         Altusdb.find({
                    _id: id
             }).then((altusdbs) => {
-          //  console.log(altusdbs);
-            // Facade pattern -> make a simple JSON object, containing just the diseases names and scoreOfDisease
-            //                -> to easily communicate with the frontend
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(altusdbs));
+                console.log(altusdbs);
+                var popular=0;
+                console.log("popular1:"+altusdbs[0].popular);
+            if(altusdbs[0].popular!=null) popular= altusdbs[0].popular+1;
+           Altusdb.findByIdAndUpdate(id, {$set:{popular:popular}}, function (err, entertainment) {
+                    if (err) return next(err);
+                    res.setHeader('Content-Type', 'application/json');
+                    res.status(200).send(JSON.stringify(entertainment));
+                    console.log("popular2:"+entertainment.popular);
+            });
         }).catch((err) => {
          //   console.log(err);
             res.status(404).send();

@@ -1,4 +1,4 @@
-app.controller('userCtrl',['$scope','$timeout', 'userService','authService', function($scope, $timeout,userService,authService) {
+app.controller('userCtrl',['$scope','$timeout', '$location','userService','authService', function($scope, $timeout,$location,userService,authService) {
  
     $scope.$on('$viewContentLoaded', function(){
      
@@ -103,7 +103,8 @@ app.controller('userCtrl',['$scope','$timeout', 'userService','authService', fun
   }
   $scope.logout = function() {
     authService.logout().then(function() {
-        window.location.href = '/admin/login';
+        $location.path('/admin/login');
+      //  window.location.href = '/admin/login';
     });
 }
 //   $scope.SetData=function(_id,title,profileurl,tag,eventstype,reason,location,vediosrc,images,Biography,PreviousClients,Testimonials,SetList){

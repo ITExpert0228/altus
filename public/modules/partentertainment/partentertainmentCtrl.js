@@ -3,6 +3,11 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
     // var catename=$scope.catename;
   
    $scope.pager = {};
+
+   $scope.noresultContents=true;
+   $scope.loadingContents=true;
+   $scope.imagegallery=true;
+
    $scope.getEntertainmentItem=function(startnumber){
     if(startnumber>0)startnumber=startnumber-1;
     startIndex=(startnumber)*20;
@@ -12,7 +17,7 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
     angular.forEach($scope.myArray, function(value, key){
         if((key>=startIndex)&&(key<=endIndex) )
         {
-          $scope.images.push({id:value._id,url:value.images[0],title:value.title,reasontobook:value.reasontobook});
+          $scope.images.push({id:value._id,url:value.images[0],title:value.title,reasontobook:value.reasontobook,popular:value.popular});
           if(value.vediosrc[0]!=null)
              $scope.videos.push(value.vediosrc[0]);
         }
@@ -20,16 +25,65 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
 }
    //vm.dummyItems = [];
     $scope.getpartentertainmentList = function() {
+        $scope.sortstring=" title";
         angular.element(document.querySelector("#Category")).removeClass("open");
+        angular.element(document.querySelector("#Destination")).removeClass("open");
+        $scope.noresultContents=true;
+        $scope.loadingContents=false;
+        $scope.imagegallery=true;
+        $scope.countrynames = ["Australia", "Austria", "Belgium","Canada","China, Hong Kong and Macau","France","Germany","Greece","Holland","India","Italy","Japan","Las Vegas","New York","Portugal","Russia & Eastern Europe","Scandinavia","Singapore & South East Asia","South Africa","South America","Spain","Switzerland","Turkey","UAE & Middle East","UK","USA"];
+
         catename  =encodeURIComponent( $routeParams.param1);
+        
         console.log( catename);
         if(catename==''){
           $window.location.href = '/';
           return;
         }
+        if (catename!='location'){
         partentertainmentService.getpartentertainmentList(catename).then(function(data) {
-            console.log(data);
             
+        console.log(data);
+            if(data.length==0){
+                $scope.noresultContents=false;
+                $scope.loadingContents=true;
+                $scope.imagegallery=true;
+            }else{
+            $scope.noresultContents=true;
+            $scope.imagegallery=false;
+            $scope.loadingContents=true;
+            $scope.allDataArray=data;    
+            $scope.myArray=[];
+            $scope.images =[];
+            $scope.videos =[];
+            $scope.title=[];
+            $scope.subscribe=[];
+            $count=0;
+
+            angular.forEach(data, function(value, key){
+                if(value.images[0]!=null)
+                    $scope.myArray.push(value);
+            });
+             $scope.setPage(1);
+          }
+        }, function(err) {
+            console.log(err);
+        });
+        
+    }else{
+        var locationname  =encodeURIComponent( $routeParams.param2);
+        console.log( locationname);
+        partentertainmentService.getpartentertainmentListforlocation(locationname).then(function(data) {
+            console.log(data);
+        if(data.length==0){
+            $scope.noresultContents=false;
+            $scope.loadingContents=true;
+            $scope.imagegallery=true;
+        }else{
+        $scope.noresultContents=true;
+        $scope.imagegallery=false;
+        $scope.loadingContents=true;
+        $scope.allDataArray=data;       
         $scope.myArray=[];
         $scope.images =[];
         $scope.videos =[];
@@ -41,35 +95,90 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
               if(value.images[0]!=null)
                  $scope.myArray.push(value);
         });
-     /*   angular.forEach($scope.myArray, function(value, key){
-          if($count<20)
-          {
-            $scope.images.push({id:value._id,url:value.images[0],title:value.title});
-            if(value.vediosrc[0]!=null)
-               $scope.videos.push(value.vediosrc[0]);
-            $count++;
-          }
-         });
-        */
        $scope.setPage(1);
-    }, function(err) {
-        console.log(err);
-    }).finally(function() {
-        
+        }
     });
+
+    }
 }
 
-$scope.setPage= function (page) {
-    if (page < 1 || page > 10000) {
-        return;
-    }
-    if($scope.myArray.length>0)
-        {
-            $scope.pager = $scope.GetPager( $scope.myArray.length, page);
-            $scope.getEntertainmentItem(page);
+    $scope.setPage= function (page) {
+        if (page < 1 || page > 10000) {
+            return;
         }
-    // get current page of items
-   // vm.items = vm.dummyItems.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
+        if($scope.myArray.length>0)
+            {
+                $scope.pager = $scope.GetPager( $scope.myArray.length, page);
+                $scope.getEntertainmentItem(page);
+            }
+        // get current page of items
+    // vm.items = vm.dummyItems.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
+    }
+
+    $scope.selectlocations=function(){
+        var locations=$scope.selectlocation;
+        console.log("selectlocation:"+locations);
+        $scope.myArray=[];
+        $scope.images =[];
+        $scope.videos =[];
+        $scope.title=[];
+        $scope.subscribe=[];
+        $count=0;
+        if(locations!=''){
+            angular.forEach(  $scope.allDataArray  , function(value, key){
+                var strlocation=value.location;
+                if(strlocation.search(locations)>-1)
+                {
+                if(value.images[0]!=null)
+                    $scope.myArray.push(value);
+                }    
+            });
+            if($scope.myArray.length!=0)
+            {
+                $scope.noresultContents=true;
+                $scope.imagegallery=false;
+         
+            } else{
+                $scope.noresultContents=false;
+                $scope.imagegallery=true;
+            }
+        }else{
+            
+            $scope.myArray=$scope.allDataArray;
+            console.log("data:"+$scope.myArray);
+            if($scope.myArray.length!=0)
+            {
+                $scope.noresultContents=true;
+                $scope.imagegallery=false;
+         
+            } else{
+                $scope.noresultContents=false;
+                $scope.imagegallery=true;
+            }
+        }
+    
+    $scope.setPage(1);
+    }
+$scope.sortImage=function(){
+console.log('sortstring:'+$scope.sortstring);
+    if($scope.sortstring=='title')
+    {
+     $scope.sortstring="-title";
+    }else{
+     $scope.sortstring="title";
+    }
+
+}
+
+$scope.sortPopular=function(){
+console.log('sortstring:'+$scope.sortstring);
+    if($scope.sortstring=='popular')
+    {
+     $scope.sortstring="-popular";
+    }else{
+     $scope.sortstring="popular";
+    }
+
 }
 $scope.GetPager=function (totalItems, currentPage, pageSize) {
     // default to first page
@@ -130,31 +239,36 @@ $scope.range=function(startnumber,endnumber){
     return pagearray;
 }
 $scope.$on('$viewContentLoaded', function(){
-  
   $(document).ready(function () {
     //imageload
-   /* var $container = $('#partentertainCtrlImg');
-    var $imagegallery = $('#imagegallery');
-    $imagegallery.hide();
-  //  $loadingimages.show();
+  setTimeout(function(){  
+    var $container = $('#partentertainCtrlImg');
     $container.imagesLoaded()
         .always( function( instance ) {
-            console.log('all images loaded');
-            $imagegallery.show();
-            $('#loadingContents').hide();
+           
           })
         .done( function( instance ) {
             console.log('all images successfully loaded');
+       /*     $scope.$apply(function() {
+                $scope.loadingContents=true;
+                $scope.imagegallery=false;
+            });
+        */    
         })
         .fail( function() {
-            console.log('all images loaded, at least one is broken');
+            // console.log('all images loaded, at least one is broken');
+            // $scope.loadingContents=true;
+            // $scope.$digest();
+            // $scope.imagegallery=false;
+            // $scope.$digest();
         })
         .progress( function( instance, image ) {
             //$imagegallery.hide();
             var result = image.isLoaded ? 'loaded' : 'broken';
             console.log( 'image is ' + result + ' for ' + image.img.src );
         });
-   */
+    }, 1000);
+
     //Skyicon
     var icons = new Skycons({"color": "#fff"}),
     list = [

@@ -83,7 +83,8 @@ app.controller('signupcheckCtrl',['$scope', '$location','signupcheckService','$r
    }
    $scope.logout = function() {
     authService.logout().then(function() {
-        window.location.href = '/admin/login';
+        $location.path('/admin/login');
+        //window.location.href = '/admin/login';
     });
 }
    $scope.deleteContent=function(){

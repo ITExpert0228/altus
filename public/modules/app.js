@@ -20,7 +20,10 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'modules/partentertainment/partentertainment.html',
         controller: 'partentertainmentController'
     })
-    
+    .when('/partentertainment/:param1/:param2', {
+        templateUrl: 'modules/partentertainment/partentertainment.html',
+        controller: 'partentertainmentController'
+    })
     .when('/', {
         templateUrl: 'modules/home/home.html',
 		controller: 'homeController'

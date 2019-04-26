@@ -3,6 +3,7 @@ app.controller('contactusController',['$scope', '$rootScope','contactusService',
 
      $scope.contactusinit=function(){
         angular.element(document.querySelector("#Category")).removeClass("open");
+        angular.element(document.querySelector("#Destination")).removeClass("open");
      }
      $scope.saveok=function(){
         angular.element(document.querySelector(".myalertpopup-overlay")).removeClass("active");

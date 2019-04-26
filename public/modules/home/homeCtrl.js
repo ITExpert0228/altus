@@ -2,7 +2,7 @@ app.controller('homeController',['$scope','$rootScope', '$sce','$location', 'hom
    
     $scope.homeinit=function(){
         angular.element(document.querySelector("#Category")).removeClass("open");
-
+        angular.element(document.querySelector("#Destination")).removeClass("open");
         homeService.gethomeList().then(function(data) {
           
             //  console.log($scope.signuparray);

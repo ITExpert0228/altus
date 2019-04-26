@@ -1,8 +1,8 @@
 app.controller('signupController',['$scope', 'signupService', function($scope, signupService) {
   $scope.signupinit=function(){
     angular.element(document.querySelector("#Category")).removeClass("open");
-   // angular.element(document.querySelector("#Eventtype")).removeClass("open");
-   // angular.element(document.querySelector("#Destination")).removeClass("open");
+    angular.element(document.querySelector("#Eventtype")).removeClass("open");
+    angular.element(document.querySelector("#Destination")).removeClass("open");
     }
 
     $scope.uploadFile = function()

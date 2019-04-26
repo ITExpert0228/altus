@@ -1,7 +1,8 @@
 app.controller('signupCtrl',['authService','$scope','$rootScope', '$location','signupService', function(authService,$scope,$rootScope,$location, signupService) {
     $scope.logout = function() {
         authService.logout().then(function() {
-            window.location.href = '/admin/login';
+            //window.location.href = '/admin/login';
+            $location.path('/admin/login');
         });
     }
     $scope.$on('$viewContentLoaded', function(){

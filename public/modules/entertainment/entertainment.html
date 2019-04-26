@@ -51,7 +51,7 @@
                       <div class="col-sm-12">
                           <h2>{{title}}&nbsp; VIDEOS</h2>
                           <ul>
-                              <li ng-repeat="video in videos"><img ng-src="{{video}}" style="width:260px;height:200px; object-fit:cover;"><i class="fa fa-play-circle"></i></li>
+                              <li ng-repeat="video in videos track by $index"><img ng-src="{{video}}" style="width:260px;height:200px; object-fit:cover;"><i class="fa fa-play-circle"></i></li>
                           </ul>
                       </div>
                    </div>
@@ -68,7 +68,7 @@
                                 <h3>Loading images...</h3>
                           </div>
                          <ul class="gallery" id="imagegallery">
-                             <li ng-repeat="image in images" style="width:260px; height:160px; " >
+                             <li ng-repeat="image in images track by $index" style="width:260px; height:160px; " >
                                 <a href="{{image.url}}">
                                 <img id="{{image.id}}" ng-src="{{image.url}}" style="width:260px; height:160px;object-fit:cover;">
                                 </a>

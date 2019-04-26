@@ -11,8 +11,7 @@
                             <h4><strong>World Wide Entertainment Experts</strong></h4>
                         </div>
                         <div class="panel_body home-www">
-                         
-                                <a href="#"  class="btn btn-news btn-lg text-uppercase"> <strong>Request a Call</strong></a>
+                               <a href="#"  class="btn btn-news btn-lg text-uppercase"> <strong>Request a Call</strong></a>
                                 <a href="#"  class="btn btn-news btn-lg text-uppercase"> <strong>Request a Quick Quote</strong></a>
                         </div>
                         <div class="panel_body home-www">
@@ -31,14 +30,13 @@
             <div class="col-md-12">
                 <div class="menu-list">
                     <ul class="video-popular-wrapper">
-                        <li><a href="" class="">POPULAR </a></li>
-                        <li><a href="">A <> Z</a></li>
+                        <li><a href="" ng-click="sortPopular()">POPULAR</a></li>
+                        <li><a href="" ng-click="sortImage()">A <> Z</a></li>
                         <li><div class="dropdown">
 
-                          <select class="select-two-video"  >
-                          
-                          <option value="All" selected="selected" class="hide">filter by location</option><option value="16">Australia</option><option value="83">Austria</option><option value="22">Belgium</option><option value="17">Canada</option><option value="12">China, Hong Kong and Macau</option><option value="7">France</option><option value="6">Germany</option><option value="546">Greece</option><option value="13">Holland</option><option value="24">India</option><option value="9">Italy</option><option value="23">Japan</option><option value="5">Las Vegas</option><option value="4">New York</option><option value="21">Portugal</option><option value="15">Russia &amp; Eastern Europe</option><option value="18">Scandinavia</option><option value="11">Singapore &amp; South East Asia</option><option value="19">South Africa</option><option value="20">South America</option><option value="8">Spain</option><option value="14">Switzerland</option><option value="100">Turkey</option><option value="10">UAE &amp; Middle East</option><option value="2">UK</option><option value="3">USA</option><option value="-" class="hide">All Locations</option>
-                          
+                        <select class="select-two-video" ng-model="selectlocation" ng-change="selectlocations()" >
+                            <option value=""  selected="selected" >All country</option>   
+                            <option ng-repeat="x in countrynames" value="{{x}}">{{x}}</option>
                           </select>
                         </div></li>
                     </ul>
@@ -53,17 +51,21 @@
         <!-- START MAIN CONTENT -->
         <div class="col-sm-12 col-p  main-content">
             <div class="theiaStickySidebar">
-                <div class="post-inner categoty-style-1">
+                    <div id="loadingContents" ng-hide="loadingContents">
+                            <h3>Loading Entertainments...</h3>
+                    </div>
+                    <div id="noresultContents" ng-hide="noresultContents">
+                            <h3>Entertainment doesn't exist</h3>
+                    </div>
+                <div class="post-inner categoty-style-1" id="imagegallery" ng-hide="imagegallery">
                     <!-- post body -->
-                    <div class="post-body" id="imagegallery">
+                    <div class="post-body" >
                         <div class="row row-m" >
-                            
-                            <div class="col-sm-3 col-p" style="height: 360px;"ng-repeat="image in images">
+                            <div class="col-sm-3 col-p" style="height: 360px;"ng-repeat="image in images | orderBy:sortstring">
                                 <article class="text-parent">
                                     <figure>
                                         <a href="/entertainment/{{image.id}}" ng-click="myclick(image.id,image.title)"><img ng-src="{{image.url}}" style="height:242px; width:345px; object-fit:cover;" alt="" class="img-responsive"></a>
                                         <p class="video-text-cstm">{{image.reasontobook}}</p>
-                                    <!--    <span class="post-category">Business</span>-->
                                     </figure>
                                     <div class="post-info">
                                         <h3><a href="#">{{image.title}}</a></h3>

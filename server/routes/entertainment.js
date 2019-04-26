@@ -14,6 +14,9 @@ router.post('/create', entertainment_controller.entertainment_create);
 router.get('/getAll', entertainment_controller.entertainment_alls);
 router.get('/getsAll', entertainment_controller.entertainment_all);
 router.get('/getAllbycate', entertainment_controller.entertainment_allsbycate);
+
+router.get('/getAllbycateforlocation', entertainment_controller.entertainment_allsbycateforlocation);
+
 router.get('/getAllbyid', entertainment_controller.entertainment_allsbyid);
 router.get('/:id', entertainment_controller.entertainment_details);
 

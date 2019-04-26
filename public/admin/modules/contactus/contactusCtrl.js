@@ -1,4 +1,4 @@
-app.controller('contactusCtrl',['$scope', 'contactusService','authService', function($scope, contactusService,authService) {
+app.controller('contactusCtrl',['$scope', '$location','contactusService','authService', function($scope,$location, contactusService,authService) {
  
     $scope.$on('$viewContentLoaded', function(){
         function format ( d ) {
@@ -237,7 +237,7 @@ app.controller('contactusCtrl',['$scope', 'contactusService','authService', func
 }
 $scope.logout = function() {
     authService.logout().then(function() {
-        window.location.href = '/admin/login';
+        $location.path('/admin/login');
     });
 }
 }]);

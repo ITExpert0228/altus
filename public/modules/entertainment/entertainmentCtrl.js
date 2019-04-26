@@ -1,17 +1,18 @@
-app.controller('entertainmentAllController',['$scope','$rootScope', '$routeParams','entertainmentService', function($scope, $rootScope,$routeParams,entertainmentService) {
+app.controller('entertainmentAllController',['$scope','$rootScope', '$location','$routeParams','entertainmentService', function($scope, $rootScope,$location,$routeParams,entertainmentService) {
    $scope.getentertainmentbyid = function() {
     angular.element(document.querySelector("#Category")).removeClass("open");
-    $id  = $routeParams.param1;
+    angular.element(document.querySelector("#Destination")).removeClass("open");
+     $id  = $routeParams.param1;
     console.log( $id);
     $scope.tabvar1=true;
     $scope.videocheck=true;
     $scope.tabvar2=true;
     if($id==undefined){
-      window.location.href = '/';
+     $location.path('/');
     }
     entertainmentService.getentertainmentbyid($id).then(function(data) { 
-     $scope.catename =data[0].catename;
-     $scope.title=data[0].title;
+     if(data.catename!=undefined)   $scope.catename =data.catename;
+     $scope.title=data.title;
      $scope.tags=[];
      $scope.videos=[];
      $scope.reasontobook=[];
@@ -19,29 +20,30 @@ app.controller('entertainmentAllController',['$scope','$rootScope', '$routeParam
      $scope.images =[];
      $scope.videos =[];
      console.log( data);
-     if( data[0].images!=null)
+     if( data.images!=null)
       {
-     // $scope.images =data[0].images;
-      angular.forEach(data[0].images, function(value, key){
+     // $scope.images =data.images;
+          angular.forEach(data.images, function(value, key){
           $scope.images.push({id:key,url:value});
           console.log("key:"+key);
        });
       
       }
       console.log("$csope.images"+$scope.images);
-      if( data[0].vediosrc.length>0)
-          {$scope.videos=data[0].vediosrc;}
+      var videosrcarray=data.vediosrc;
+      if( videosrcarray.length>0)
+          {$scope.videos=data.vediosrc;}
           else{$scope.videocheck=false;}
 
-          $scope.bigImage=data[0].images[0];
+          $scope.bigImage=data.images[0];
           console.log("$csope.bigimage"+$scope.bigImage);
-          $scope.tags=data[0].tag;
-          $scope.reasontobook=data[0].reasontobook;
-          $scope.reasons=data[0].reason;
-           $scope.previous=data[0].PreviousClients;
-          if(data[0].PreviousClients==undefined)$scope.tabvar2=false;
-          $scope.biography=data[0].Biography;
-          if(data[0].Biography==undefined)$scope.tabvar1=false;
+          $scope.tags=data.tag;
+          $scope.reasontobook=data.reasontobook;
+          $scope.reasons=data.reason;
+           $scope.previous=data.PreviousClients;
+          if((data.PreviousClients==undefined)||(data.PreviousClients==''))$scope.tabvar2=false;
+          $scope.biography=data.Biography;
+          if((data.Biography==undefined)||(data.Biography==''))$scope.tabvar1=false;
       });
     }
     $scope.getEntertainments = function(name) {
