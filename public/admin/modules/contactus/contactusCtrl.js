@@ -84,6 +84,11 @@ app.controller('contactusCtrl',['$scope', '$location','contactusService','authSe
                  
               ],
               "pageLength": 10,
+              'processing': true,
+              'language': {
+                  'loadingRecords': '&nbsp;',
+                  "processing": '<div class="loader"></div>'
+              },
               "ajax": "/api/contactus/getAll",
               "scrollX": true,
               columnDefs: [
@@ -228,9 +233,9 @@ app.controller('contactusCtrl',['$scope', '$location','contactusService','authSe
   $scope.getContactusList = function() {
     contactusService.getContactusList().then(function(data) {
         $scope.contactusarray=data;
-        console.log($scope.contactusarray);
+        ($scope.contactusarray);
     }, function(err) {
-        console.log(err);
+      //  console.log(err);
     }).finally(function() {
         
     });

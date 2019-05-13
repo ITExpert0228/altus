@@ -1,9 +1,12 @@
 app.controller('entertainmentAllController',['$scope','$rootScope', '$location','$routeParams','entertainmentService', function($scope, $rootScope,$location,$routeParams,entertainmentService) {
-   $scope.getentertainmentbyid = function() {
+    $scope.loaderContent=false;
+    $scope.loaderShow=true;
+    $scope.getentertainmentbyid = function() {
+    $scope.loaderContent=false;
+    $scope.loaderShow=true;
     angular.element(document.querySelector("#Category")).removeClass("open");
     angular.element(document.querySelector("#Destination")).removeClass("open");
-     $id  = $routeParams.param1;
-    console.log( $id);
+    $id  = $routeParams.param1;
     $scope.tabvar1=true;
     $scope.videocheck=true;
     $scope.tabvar2=true;
@@ -11,7 +14,9 @@ app.controller('entertainmentAllController',['$scope','$rootScope', '$location',
      $location.path('/');
     }
     entertainmentService.getentertainmentbyid($id).then(function(data) { 
-     if(data.catename!=undefined)   $scope.catename =data.catename;
+    $scope.loaderContent=false;
+    $scope.loaderShow=true;
+    if(data.catename!=undefined)   $scope.catename =data.catename;
      $scope.title=data.title;
      $scope.tags=[];
      $scope.videos=[];
@@ -19,24 +24,19 @@ app.controller('entertainmentAllController',['$scope','$rootScope', '$location',
      $scope.reasons=[];
      $scope.images =[];
      $scope.videos =[];
-     console.log( data);
      if( data.images!=null)
       {
      // $scope.images =data.images;
           angular.forEach(data.images, function(value, key){
           $scope.images.push({id:key,url:value});
-          console.log("key:"+key);
-       });
-      
+       }); 
       }
-      console.log("$csope.images"+$scope.images);
       var videosrcarray=data.vediosrc;
       if( videosrcarray.length>0)
           {$scope.videos=data.vediosrc;}
           else{$scope.videocheck=false;}
 
           $scope.bigImage=data.images[0];
-          console.log("$csope.bigimage"+$scope.bigImage);
           $scope.tags=data.tag;
           $scope.reasontobook=data.reasontobook;
           $scope.reasons=data.reason;
@@ -44,6 +44,8 @@ app.controller('entertainmentAllController',['$scope','$rootScope', '$location',
           if((data.PreviousClients==undefined)||(data.PreviousClients==''))$scope.tabvar2=false;
           $scope.biography=data.Biography;
           if((data.Biography==undefined)||(data.Biography==''))$scope.tabvar1=false;
+          $scope.loaderContent=true;
+          $scope.loaderShow=false;   
       });
     }
     $scope.getEntertainments = function(name) {
@@ -75,25 +77,19 @@ app.controller('entertainmentAllController',['$scope','$rootScope', '$location',
           //  $loadingimages.show();
             $container.imagesLoaded()
                 .always( function( instance ) {
-                    console.log('all images loaded');
-                  
                   })
                 .done( function( instance ) {
-                    console.log('all images successfully loaded');
                     $imagegallery.show();
                     $('#imagegallery a').lightbox();
                     $('#loadingimages').hide();
                 })
                 .fail( function() {
-                    console.log('all images loaded, at least one is broken');
                     $('#loadingimages').hide();
                     $('#imagegallery a').lightbox();
                     $imagegallery.show();
                 })
                 .progress( function( instance, image ) {
-                    //$imagegallery.hide();
                     var result = image.isLoaded ? 'loaded' : 'broken';
-                    console.log( 'image is ' + result + ' for ' + image.img.src );
                 });
             }, 1000);
           //Skyicon

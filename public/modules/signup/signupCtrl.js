@@ -116,19 +116,14 @@ app.controller('signupController',['$scope', '$window','signupService', function
                 $scope.datasavestate="Your Data Can not Save Correctly in Server.";
                 angular.element(document.querySelector(".myalertpopup-content")).addClass("active");
                 angular.element(document.querySelector(".myalertpopup-overlay")).addClass("active");
-               console.log(err);
              });
 
            },
            error: function (err) {
-               console.log(err);
                return 'error';
            }
        });
-
-       // $('#LoadingLoop').show();
-       
-   
+ 
     }
     $scope.saveok=function(){
       angular.element(document.querySelector(".myalertpopup-overlay")).removeClass("active");

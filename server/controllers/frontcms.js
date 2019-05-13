@@ -11,11 +11,9 @@ exports.frontcms_create = function (req, res) {
 exports.frontcms_uploadimages = function (req, res,next) {
     const files = req.files;
     var filenames=[];  
-    console.log("files.length:"+files.length);
      for (var count = 0; count < files.length; count++) {
       var file = files[count];
       filenames.push(file.filename);
-      console.log("filenames:"+file.filename);
       }
     //console.log("file:"+file.upload_imagefile_1.name);
     if (!files) {

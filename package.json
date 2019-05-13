@@ -38,7 +38,8 @@
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "request": "^2.88.0",
-    "serve-favicon": "^2.4.1"
+    "serve-favicon": "^2.4.1",
+    "sitemap": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

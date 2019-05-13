@@ -39,6 +39,14 @@ app.use(['/uploads', '/uploads/*'], uploads);
 app.set("view options", {layout: false});
 app.use(express.static(__dirname + '/public'));
 
+app.all('/rule.xsl', function (req, res) {
+  res.sendFile('rule.xsl',{ root: __dirname + '/uploads' });
+});
+app.get('/sitemap.xml', function (req, res) {
+  res.sendFile('sitemap.xml',{ root: __dirname + '/uploads' });
+});
+
+
 app.all('/*', function(req, res, next) {
   res.sendFile('index.html', { root: __dirname + '/public' });
 });
@@ -59,5 +67,5 @@ app.use(function (err, req, res, next) {
   res.send(err.message);
 });
 
-var port = 5000;
+var port = 80;
 app.listen(port, () => {console.log('Server is up and running on port numner ' + port);});

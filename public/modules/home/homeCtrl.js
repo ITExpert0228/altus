@@ -1,10 +1,13 @@
 app.controller('homeController',['$scope','$rootScope', '$sce','$location', 'homeService', function($scope, $rootScope,$sce,$location,homeService) {
-   
+    $scope.loaderContent=false;
+    $scope.loaderShow=true;
     $scope.homeinit=function(){
+        
         angular.element(document.querySelector("#Category")).removeClass("open");
         angular.element(document.querySelector("#Destination")).removeClass("open");
         homeService.gethomeList().then(function(data) {
-          
+            $scope.loaderContent=false;
+            $scope.loaderShow=true;  
             //  console.log($scope.signuparray);
             if(data!=undefined){
                 $scope.id=data[0]._id;
@@ -17,11 +20,10 @@ app.controller('homeController',['$scope','$rootScope', '$sce','$location', 'hom
                 $scope.slider5="uploads/"+data[0].img[4];
                 $scope.slider6="uploads/"+data[0].img[5];
                 $scope.frontcms_entertainment= $sce.trustAsHtml(data[0].content);
-                console.log( $scope.frontcms_entertainment);
                 $location.path("/");
-               // var html = $compile($scope.frontcms_entertainment)($scope);
-                //angular.element(document.getElementById("#frontcms_entertainment")).append(html);
             }
+            $scope.loaderContent=true;
+            $scope.loaderShow=false;
           }, function(err) {
               console.log(err);
           }).finally(function() {

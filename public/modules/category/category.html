@@ -1,0 +1,114 @@
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+<div id="category" ng-controller="categoryController" ng-init="getCategoryList()">
+<script>
+window.scrollTo(0, 0);
+</script>
+<div ng-show="loaderShow" style="width:100%;height:700px;">
+        <div class="loader_make" ></div>
+    </div>
+<div ng-show="loaderContent">
+<section class="slider-inner inner-page-slider">
+    <div class="container">
+        <div class="row thm-margin">
+            <div class="col-sm-12 col-md-12 thm-padding">
+                <div class="slider-wrapper">
+                            <div class="slider-post post-height-1" >
+                                <a href="#" class="news-image"><img src="/images/slider02.jpg"  alt="" class="img-responsive"></a>
+                            </div>
+                        <!-- /.Slider item one -->
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+</section>
+<div class="container">
+   
+    <div class="row row-m">
+        <div class="col-sm-12 main-content col-p">
+            <div class="theiaStickySidebar">
+                <!-- START CONTACT FORM AREA -->
+                <div class="contact_form_inner">
+                    <div class="panel_inner">
+                        <div class="panel_header">
+                            <h4><strong>World Wide Entertainment Experts</strong></h4>
+                        </div>
+                        <div class="panel_body home-www">
+                         
+                                <a href="#"  class="btn btn-news btn-lg text-uppercase"> <strong>Request a Call</strong></a>
+                                <a href="#"  class="btn btn-news btn-lg text-uppercase"> <strong>Request a Quick Quote</strong></a>
+                        </div>
+                        <div class="panel_body home-www">
+                            <a href=""><i class="fa fa-facebook-square"></i></a> <a href=""><i class="fa fa-twitter-square"></i></a> <a href=""><i class="fa fa-instagram"></i></a> <a href=""><i class="fa fa-pinterest-square"></i></a> <a href=""><i class="fa fa-google-plus-square"></i></a> <a href=""><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF CONTACT FORM AREA -->
+            </div>
+        </div>
+        </div>
+        </div>
+   <div class="container">
+            <div class="col-xs-12 col-sm-12 thm-padding">
+                <div class="row slider-right-post thm-margin">
+                    <div class="col-xs-12 col-sm-3 col-md-3 thm-padding" ng-repeat="categorydata in allDataArray">
+                        <div class="slider-post post-height-2">
+                            <a href="/partentertainment/{{categorydata.tag}}" class="news-image"><img src="{{categorydata.image}}" alt="" class="img-responsive"></a>
+                            <div class="post-text" style="height:35%">
+                                <h4><a href="" >{{categorydata.tag}}</a> </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 main-content col-p">
+                
+                        <!-- post body -->
+                        <div class="post-body">
+                            <div class="news-list-item articles-list">
+                                <div class="col-md-4">
+                                    <a href="#" class="thumb"><img src="/images/wowza.jpg" alt="" class="img-responsive"></a>
+                                </div>
+                                <div class="col-md-8">
+                                   <div class="panel_header">
+                            <h2><strong>Featured Act</strong> Type of the month </h2>
+                        </div>
+                                    <p class="panel_body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley...</p>
+                                </div>
+                            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        
+    <div class="row row-m">
+        <div class="col-sm-12 main-content col-p">
+            <div class="theiaStickySidebar">
+                <!-- START CONTACT FORM AREA -->
+                <div class="contact_form_inner">
+                    <div class="panel_inner">
+                        <div class="panel_header">
+                            <h2><strong>Information</strong></h2>
+                        </div>
+                        <div class="panel_body text-center">
+                           <h2><strong>CAN'T FIND WHAT YOU ARE LOOKING FOR?</strong></h2>
+                            <h3>Please call 0044 (0) 1626 572 072 or Email the team, alternatively fill out the following search</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF CONTACT FORM AREA -->
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+</div>
+</div>

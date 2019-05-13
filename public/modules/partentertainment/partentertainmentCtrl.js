@@ -8,6 +8,8 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
    $scope.loadingContents=true;
    $scope.imagegallery=true;
 
+   $scope.loaderContent=false;
+   $scope.loaderShow=true;
    $scope.getEntertainmentItem=function(startnumber){
     if(startnumber>0)startnumber=startnumber-1;
     startIndex=(startnumber)*20;
@@ -25,6 +27,9 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
 }
    //vm.dummyItems = [];
     $scope.getpartentertainmentList = function() {
+        $scope.loaderContent=false;
+        $scope.loaderShow=true;
+
         $scope.sortstring=" title";
         angular.element(document.querySelector("#Category")).removeClass("open");
         angular.element(document.querySelector("#Destination")).removeClass("open");
@@ -42,7 +47,8 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
         }
         if (catename!='location'){
         partentertainmentService.getpartentertainmentList(catename).then(function(data) {
-            
+        $scope.loaderContent=false;
+        $scope.loaderShow=true;    
         console.log(data);
             if(data.length==0){
                 $scope.noresultContents=false;
@@ -65,6 +71,8 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
                     $scope.myArray.push(value);
             });
              $scope.setPage(1);
+             $scope.loaderContent=true;
+             $scope.loaderShow=false;
           }
         }, function(err) {
             console.log(err);
@@ -74,6 +82,8 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
         var locationname  =encodeURIComponent( $routeParams.param2);
         console.log( locationname);
         partentertainmentService.getpartentertainmentListforlocation(locationname).then(function(data) {
+            $scope.loaderContent=false;
+            $scope.loaderShow=true;
             console.log(data);
         if(data.length==0){
             $scope.noresultContents=false;
@@ -96,6 +106,8 @@ app.controller('partentertainmentController', ['$scope','$rootScope','$routePara
                  $scope.myArray.push(value);
         });
        $scope.setPage(1);
+       $scope.loaderContent=true;
+       $scope.loaderShow=false;
         }
     });
 

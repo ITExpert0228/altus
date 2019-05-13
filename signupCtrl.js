@@ -40,8 +40,8 @@ app.controller('signupController',['$scope', 'signupService', function($scope, s
             success: function (files) {
               for (var count = 0; count < files.length; count++) {
                 var file = files[count];
-                console.log(file.filename);
-                console.log(files.length);
+                (file.filename);
+            //    console.log(files.length);
                if(count==0){$scope.ProfileImage=file.filename;}
                if(count==1){$scope.Images1=file.filename;}
                if(count==2){$scope.Images2=file.filename;}
@@ -57,7 +57,7 @@ app.controller('signupController',['$scope', 'signupService', function($scope, s
               }
             },
             error: function (err) {
-                console.log(err);
+            //    console.log(err);
                 return 'error';
             }
         });
@@ -181,7 +181,7 @@ app.controller('signupController',['$scope', 'signupService', function($scope, s
         alert("save ok!");
         }, function(err) {
         alert("save failed!");
-        console.log(err);
+     //   console.log(err);
        });
     }
   $scope.$on('$viewContentLoaded', function(){

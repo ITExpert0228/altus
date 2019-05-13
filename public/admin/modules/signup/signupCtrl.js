@@ -182,6 +182,11 @@ app.controller('signupCtrl',['authService','$scope','$rootScope', '$location','s
            
         ],
         "pageLength": 10,
+        'processing': true,
+        'language': {
+            'loadingRecords': '&nbsp;',
+            "processing": '<div class="loader"></div>'
+        },
         "scrollX": true,
         "ajax": "/api/signup/getAll",
         "columns": [

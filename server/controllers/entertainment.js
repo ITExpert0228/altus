@@ -31,7 +31,31 @@ exports.entertainment_all = function (req, res) {
     Altusdb.find({}).then((entertainment) => {
       //  for(var i=0; i<entertainment.length;i++)
         var entertainment_temp=[];
-        for(var i=0; i<5267;i++)
+        // for(var i=0; i<(entertainment.length-2);i++)
+        //  {
+        //     for(var j=i+1;j<entertainment.length-1;j++)
+        //     {
+        //         if((entertainment[i].title.localeCompare(entertainment[j].title))==0)
+        //          {
+        //              console.log("celebdata[i]._id:"+entertainment[i]._id);
+        //              Altusdb.findByIdAndRemove(entertainment[i]._id, function (err) {
+        //                 if (err) return next(err);
+        //               //  res.send('Deleted successfully!');
+        //               console.log("ok");
+        //             });
+        //             continue;
+        //          }   
+        //     }
+        // }
+        // console.log("ok");
+        // res.status(200).send("ok");
+
+
+
+
+
+
+        for(var i=0; i<entertainment.length;i++)
         {
             if(entertainment[i].title==null){entertainment[i].title='';}
             if(entertainment[i].profileimage==null){entertainment[i].profileimage='';}
@@ -50,12 +74,12 @@ exports.entertainment_all = function (req, res) {
             entertainment_temp.push(entertainment[i]);   
      //       console.log(i+":"+entertainment[i]); 
         }
-        console.log(entertainment_temp);
-       // res.setHeader('Content-Type', 'application/json');
-      //  res.status(200).send(JSON.stringify(entertainment));
-        var obj = {  data: entertainment_temp };
-   //     console.log(JSON.stringify(obj));
-         res.status(200).send(JSON.stringify(obj));
+    //   console.log(entertainment_temp);
+    //    res.setHeader('Content-Type', 'application/json');
+    //    res.status(200).send(JSON.stringify(entertainment));
+       var obj = {  data: entertainment_temp };
+   //    console.log(JSON.stringify(obj));
+        res.status(200).send(JSON.stringify(obj));
     }).catch((err) => {
          res.status(404).send();
     });

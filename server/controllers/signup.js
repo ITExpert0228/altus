@@ -57,7 +57,7 @@ exports.signup_create = function (req, res) {
             Testimonials: req.body.signup.Testimonials            
         }
     );
-console.log(signup);
+
     signup.save(function (err) {
         if (err) {
             return next(err);
@@ -75,12 +75,10 @@ exports.signup_details = function (req, res,next) {
 exports.media_upload = async function (req, res, next) {
   const files = req.files;
   var filenames=[];  
-  console.log("files.length:"+files.length);
-   for (var count = 0; count < files.length; count++) {
+    for (var count = 0; count < files.length; count++) {
     var file = files[count];
     filenames.push(file.filename);
-    console.log("filenames:"+file.filename);
-    }
+     }
   //console.log("file:"+file.upload_imagefile_1.name);
   if (!files) {
     const error = new Error('Please upload a file');
@@ -95,7 +93,6 @@ exports.signup_alls = function (req, res) {
     Signup.find({}).then((signup) => {
         //console.log(signup);
         var obj = {  data: signup };
-        console.log(JSON.stringify(obj));
         res.status(200).send(JSON.stringify(obj));
      }).catch((err) => {
          res.status(404).send();

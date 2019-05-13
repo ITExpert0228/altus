@@ -6,7 +6,7 @@ exports.test = function (req, res,next) {
 };
 
 exports.user_register = function (req, res, next) {
-    console.log(req.body);
+  //  console.log(req.body);
     var userObj = req.body.user;
     var user = new User(userObj);
 
@@ -19,7 +19,7 @@ exports.user_register = function (req, res, next) {
                 res.send(newUser)
             })
         } else {
-            console.log(obj);
+         //   console.log(obj);
             var duplicatedLoginNameErr = new Error("DUPLICATED");
             duplicatedLoginNameErr.status = 427; duplicatedLoginNameErr.statusText = "user exists";
             return next(duplicatedLoginNameErr);
@@ -86,7 +86,7 @@ exports.user_details = function (req, res,next) {
 exports.user_list = function (req, res) {
     User.find( {role:'client'}).then((userlist) => {
         var obj = {  data: userlist };
-        console.log(JSON.stringify(obj));
+    //    console.log(JSON.stringify(obj));
          res.status(200).send(JSON.stringify(obj));
     }).catch((err) => {
          res.status(404).send();
@@ -114,12 +114,7 @@ exports.user_update = function (req, res,next) {
 
 
 exports.user_save = function (req, res,next) {
-    console.log(req.body);
-  //  console.log(req.params);
-
-    // res.status(200).send();return;
-  //  console.log(req.body.data[0][id]);
-     var user = JSON.stringify(req.body);
+    var user = JSON.stringify(req.body);
     var person = req.body;
     var text = "";
     var x;
@@ -235,7 +230,7 @@ exports.user_save = function (req, res,next) {
             role:role
         }
     );
-    console.log("user:"+user);
+    ("user:"+user);
     if(action=="create"){
         user.save(function (err, nuser) {
             if (err) {
@@ -246,14 +241,11 @@ exports.user_save = function (req, res,next) {
             // res.send('user Created successfully');
         })
     }else if(action=="edit"){
-        console.log("user: edit");
-        console.log("user: edit"+id);
-        User.findByIdAndUpdate(id,{$set: {loginEmail:loginEmail,firstName:firstName,lastName:lastName,password:password,role:role }}, function (err, nuser) {
+            User.findByIdAndUpdate(id,{$set: {loginEmail:loginEmail,firstName:firstName,lastName:lastName,password:password,role:role }}, function (err, nuser) {
             if (err) return next(err);
             User.findById(id, function (err, nuser) {
                 if (err) return next(err);
                 var retArr = [nuser];
-                console.log(nuser);
                 res.status(200).send(JSON.stringify({data:retArr}));
             })
         });

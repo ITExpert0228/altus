@@ -41,51 +41,25 @@
         <link href="/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css"/>
         <!-- owl transitions -->
         <link href="/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css"/>
+        <!-- Loader -->
+        <link href="/css/loader.css" rel="stylesheet" type="text/css"/>
         <!-- add this -->
         <link href="/css/responsive.css" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
         <link href="/css/mega-menu.css" rel="stylesheet" type="text/css"/>
         <!-- style css -->
         <link href="/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="/css/jquery.lightbox.css" rel="stylesheet" type="text/css"/>
 
-        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-     <!--  <script src="/js/RYPP.js"></script>-->
-                   
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/jquery-ui.min.js"></script>
-        <script src="/js/theia-sticky-sidebar.js"></script>
-        <script src="/js/skycons.js"></script>
-        <script src="/owl-carousel/owl.carousel.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <script src="/js/jquery.menu-aim.js"></script> 
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="js/jquery.lightbox.js"></script>  
-
-        <script src="/modules/app.js"></script>
-        <script src="/modules/partentertainment/partentertainmentCtrl.js"></script>
-        <script src="/modules/partentertainment/partentertainmentService.js"></script>
-        <script src="/modules/entertainment/entertainmentCtrl.js"></script>
-        <script src="/modules/entertainment/entertainmentService.js"></script>
-        <script src="/modules/contactus/contactusCtrl.js"></script>
-        <script src="/modules/contactus/contactusService.js"></script>
-        <script src="/modules/signup/signupCtrl.js"></script>
-        <script src="/modules/signup/signupService.js"></script>
-        <script src="/modules/home/homeCtrl.js"></script>
-        <script src="/modules/home/homeService.js"></script>
- <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
-   <!-- add this -->
-
+ 
     </head>
 
     <body class="home_seven" ng-app="mainApp">
         <!-- PAGE LOADER -->
         <div class="se-pre-con"></div>
         <!-- *** START PAGE HEADER SECTION *** -->
-        <header>
+        <header ng-controller="getEntertainmentCtrl"> 
             <!-- START HEADER TOP SECTION -->
             <div class="header-top">
                 <div class="container">
@@ -124,213 +98,199 @@
                 </div> <!-- end of /. container -->
             </div>
             <!-- END OF /. HEADER TOP SECTION -->
-            <!-- START MIDDLE SECTION -->
-            <div class="header-mid hidden-xs">
+            
+            <!-- Start Top Search -->
+            <div class="top-search">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="logo">
-                                <a href="/index.html"><img src="/images/logo.png" class="img-responsive" alt=""></a>
-
-                            </div>
-                        </div>
-                        <!-- <div class="col-sm-8 logo-links">
-                           <ul class="nav navbar-nav navbar-right" data-in="" data-out="">
-                               
-                            <li><a href="about.html"><span class="blank-s"></span> <span class="larg-font">Blog</span></a></li>
-                            <li><a href="faq.html"><span class="blank-s"></span> <span class="larg-font">News</span></a></li>
-                       
-                           </ul>
-                        </div> -->
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" id="searchkeyword"  name="searchkeyword" ng-model="searchkeyword" ng-model-options="{ updateOn: 'change' }" ng-keyup="search($event)" class="form-control"  placeholder="Search for keywords">
+                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
                     </div>
                 </div>
             </div>
-            <!-- END OF /. MIDDLE SECTION -->
+            <!--Search state Modal -->
+            <div class="myalertpopup-overlay1">
+              <!--Creates the popup content-->
+                <div class="myalertpopup-content1">
+                  <h3>Search State</h3>
+                  <h3> {{searchstate}}</h3>
+                  <!--popup's close button-->
+                  <input type="button"  class="lg-btn-custom" ng-click="searchok()" style="width:50px "  value="ok"/>
+              </div>
+            </div>
+            <!-- End Top Search -->
             <!-- START NAVIGATION -->
-            <nav class="navbar navbar-default navbar-sticky navbar-mobile"  ng-controller="getEntertainmentCtrl">
-                    <!-- Start Top Search -->
-                    <div class="top-search">
-                        <div class="container">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input type="text" id="searchkeyword"  name="searchkeyword" ng-model="searchkeyword" ng-model-options="{ updateOn: 'change' }" ng-keyup="search($event)" class="form-control"  placeholder="Search for keywords">
-                                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Top Search -->
-                                      <!-- Modal -->
-                    <div class="myalertpopup-overlay1">
-                        <!--Creates the popup content-->
-                          <div class="myalertpopup-content1">
-                            <h3>Search State</h3>
-                            <h3> {{searchstate}}</h3>
-                            <!--popup's close button-->
-                            <input type="button"  class="lg-btn-custom" ng-click="searchok()" style="width:50px "  value="ok"/>
-                        </div>
-                      </div>
-                <div class="container">      
-                        <!-- Start Atribute Navigation -->
-                        <div class="attr-nav">
-                            <ul>
-                                <li class="search"><a href="#"><i class="fa fa-search"></i> SEARCH</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Atribute Navigation -->      
-                    <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+            <nav class="navbar navbar-default navbar-sticky navbar-mobile" >
+              <div class="container">      
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i> <span class="hidden-xs">SEARCH</span></a></li>
+                    </ul>
+                </div>
+                    <!-- End Atribute Navigation -->      
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                      </button>
-                        <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="#brand"><img src="/images/logo.png" class="logo" alt=""></a>
-                    </div>
-                    <!-- End Header Navigation -->
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse js-navbar-collapse" ng-controller="getTagCtrl" ng-init="getTagInit()">
-                      <ul class="nav navbar-nav">
-                          <li class="dropdown mega-dropdown" id="Category">
-                            <a href="" class="dropdown-toggle"  data-toggle="dropdown">Search By <strong class="big-font">Category</strong> </a>
-                            <ul class="dropdown-menu mega-dropdown-menu row"   role="menu">
-                                <li class="col-sm-9">
-                                    <ul class="first-ul">
-                                      <li ng-repeat="tag in tags"><a  href="/partentertainment/{{tag.tag}}" >{{tag.tag}}</a>
-                                          <ul class="second-ul half-list">
-                                            <li ng-repeat="subtags in tag.subtag track by $index"><a  href="/partentertainment/{{subtags}}" >{{subtags}}</a></li>
-                                          </ul>
-                                      </li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">
-                                  <ul class="pop-listing pop-listing-full">
-                                    <li class="dropdown-header">POPULAR</li>
-                                    <li>
-                                      <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
-                                        <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
-                                      </div>
-                                    </li>
-                            <li>
-                                      <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
-                                        <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown mega-dropdown" id="Destination"> 
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Search By <strong class="big-font">DESTINATION</strong> </a>
-                        <ul class="dropdown-menu mega-dropdown-menu row">
-                        <li class="col-sm-4">
-                          <ul>
-                            <li class="dropdown-header">Europe & Middle East</li>
-                            <li><a href="/partentertainment/location/uk">UK</a></li>
-                            <li><a href="/partentertainment/location/Germany">Germany</a></li>
-                            <li><a href="/partentertainment/location/France">France</a></li>
-                            <li><a href="/partentertainment/location/Spain">Spain</a></li>
-                            <li><a href="/partentertainment/location/Italy">Italy</a></li>
-                            <li><a href="/partentertainment/location/UAE & Middle East">UAE & Middle East</a></li>
-                            <li><a href="/partentertainment/location/Holland">Holland</a></li>
-                            <li><a href="/partentertainment/location/Switzerland">Switzerland</a></li>
-                            <li><a href="/partentertainment/location/Russia & Eastern Europe">Russia & Eastern Europe</a></li>
-                            <li><a href="/partentertainment/location/Portugal">Portugal</a></li>				
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Asia Pacific</li>
-                            <li><a href="/partentertainment/location/India">India</a></li>
-                            <li><a href="/partentertainment/location/Singapore">Singapore</a></li>
-                            <li><a href="/partentertainment/location/China & Hong Kong">China & Hong Kong</a></li>
-                            <li><a href="/partentertainment/location/Japan">Japan</a></li>
-
-                          </ul>
-                        </li>
-                        <li class="col-sm-4">
-                          <ul>
-                            <li class="dropdown-header">REST OF THE WORLD</li>
-                            <li><a href="/partentertainment/location/South Africa">South Africa</a></li>
-                          </ul>
-                        </li>
-                        <li class="col-sm-4">
-                          <ul>
-                            <li class="dropdown-header">THE AMERICAS</li>
-                            <li><a href="/partentertainment/location/USA">USA</a></li>
-                            <li><a href="/partentertainment/location/CANADA">CANADA</a></li>
-                            <li><a href="/partentertainment/location/SOUTH AMARICA">SOUTH AMARICA </a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                        </li>
-                        <li class="dropdown mega-dropdown" id="Eventtype">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Search By <strong class="big-font">Event Type</strong> </a>
-                        <ul class="dropdown-menu mega-dropdown-menu row">
-                          <li class="col-sm-7">
-                            <ul class="first-ul">
-                      <li><a href="#">Corporate Entertainment</a>
-                        <ul class="second-ul">
-                          <li><a href="#">After Dinner Shows</a></li>
-                                  <li><a href="#">Background Music</a></li>
-                                  <li><a href="#">Comperes, Event Hosts & Speakers</a></li>
-                                  <li><a href="#">Cutting Edge Entertainment</a></li>
-                                  <li><a href="#">Dance The Night Away</a></li>
-                                  <li><a href="#">Exhibitions</a></li>
-                                </ul>
-                          </li>
-                              <li><a href="#">Special Events</a>
-                      <ul class="second-ul">
-                  
-                              <li><a href="#">Children's Entertainment</a></li>
-                              <li><a href="#">Entertainers for advertising</a></li>
-                              <li><a href="#">Exclusive VIP parties</a></li>
-                              <li><a href="#">Family Shows for Malls</a></li>
-                              <li><a href="#">Footfall Drivers</a></li>
-                            </ul>
-                      </li>
-                      <li><a href="#">Wedding Entertainment</a>
-                      <ul class="second-ul">
-                          <li><a href="#">Ceremony Music</a></li>
-                          <li><a href="#">Drinks Reception</a></li>
-                          <li><a href="#">Evening Party</a></li>
-                      </ul>
-                      </li>               
-                              
-                      </ul>
-                  </li>
-                  <li class="col-sm-5">
-                    <ul class="pop-listing">
-                      <li class="dropdown-header">POPULAR</li>
-                      <li>
-                        <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
-                          <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                    </button>
+                    <a class="navbar-brand  hidden-md hidden-lg" href="/"><img src="images/logo.png" class="logo" alt=""></a>
+                        <div class="logo hidden-xs hidden-sm">
+                            <a href="/"><img src="images/logo.png" class="img-responsive" alt=""></a>
                         </div>
-                      </li>
-                      <li>
-                        <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
-                          <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
-                          <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
-                          <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
-                        </div>
-                      </li>
-
-                    </ul>
-                  </li>
-                </ul>
-                        </li>		  
-                      </ul>
-                    </div>
                 </div>
-      
-            
-            
-            
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse js-navbar-collapse" ng-controller="getTagCtrl" ng-init="getTagInit()">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown mega-dropdown" id="Category">
+                      <a href="/category" class="dropdown-toggle"  data-toggle="dropdown">Search By <strong class="big-font">Category</strong> </a>
+                      <ul class="dropdown-menu mega-dropdown-menu row"   role="menu">
+                        <li class="col-sm-9">
+                            <ul class="first-ul">
+                              <li ng-repeat="tag in tags"><a  href="/partentertainment/{{tag.tag}}" >{{tag.tag}}</a>
+                                  <ul class="second-ul half-list">
+                                    <li ng-repeat="subtags in tag.subtag track by $index"><a  href="/partentertainment/{{subtags}}" >{{subtags}}</a></li>
+                                  </ul>
+                              </li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-3">
+                          <ul class="pop-listing pop-listing-full">
+                            <li class="dropdown-header">POPULAR</li>
+                            <li>
+                              <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
+                                <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
+                                <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown mega-dropdown" id="Destination"> 
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Search By <strong class="big-font">DESTINATION</strong> </a>
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                    <li class="col-sm-4">
+                      <ul class="first-ul">
+                        <li class="dropdown-header">Europe & Middle East</li>
+                        <li><a href="/partentertainment/location/UK">UK</a></li>
+                        <li><a href="/partentertainment/location/Germany">Germany</a></li>
+                        <li><a href="/partentertainment/location/France">France</a></li>
+                        <li><a href="/partentertainment/location/Spain">Spain</a></li>
+                        <li><a href="/partentertainment/location/Italy">Italy</a></li>
+                        <li><a href="/partentertainment/location/UAE">UAE</a></li>
+                        <li><a href="/partentertainment/location/Middle East">Middle East</a></li> 
+                        <li><a href="/partentertainment/location/Holland">Holland</a></li>
+                        <li><a href="/partentertainment/location/Switzerland">Switzerland</a></li>
+                        <li><a href="/partentertainment/location/Russia">Russia</a></li>
+                        <li><a href="/partentertainment/location/Eastern Europe">Eastern Europe</a></li>
+                        <li><a href="/partentertainment/location/Portugal">Portugal</a></li>
+                        <li><a href="/partentertainment/location/Scadinavia">Scadinavia</a></li>
+                        <li><a href="/partentertainment/location/Portugal">Portugal</a></li>
+                        <li><a href="/partentertainment/location/Belgium">Belgium</a></li>
+                        <li><a href="/partentertainment/location/Austria">Austria</a></li>
+                        <li><a href="/partentertainment/location/Turkey">Turkey</a></li>					
+                        <li><a href="/partentertainment/location/Greece">Greece</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Asia Pacific</li>
+                        <li><a href="/partentertainment/location/India">India</a></li>
+                        <li><a href="/partentertainment/location/Singapore">Singapore</a></li>
+                        <li><a href="/partentertainment/location/China & Hong Kong">China & Hong Kong</a></li>
+                        <li><a href="/partentertainment/location/Japan">Japan</a></li>
+                        <li><a href="/partentertainment/location/Australia">Australia</a></li>
+                      </ul>
+                    </li>
+                    <li class="col-sm-4">
+                      <ul class="first-ul">
+                        <li class="dropdown-header">REST OF THE WORLD</li>
+                        <li><a href="/partentertainment/location/South Africa">South Africa</a></li>
+                      </ul>
+                    </li>
+                    <li class="col-sm-4">
+                      <ul class="first-ul">
+                        <li class="dropdown-header">THE AMERICAS</li>
+                        <li><a href="/partentertainment/location/USA">USA</a></li>
+                        <li><a href="/partentertainment/location/CANADA">CANADA</a></li>
+                        <li><a href="/partentertainment/location/SOUTH AMARICA">SOUTH AMARICA </a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                    </li>
+                    <li class="dropdown mega-dropdown" id="Eventtype">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Search By <strong class="big-font">Event Type</strong> </a>
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                      <li class="col-sm-7">
+                        <ul class="first-ul">
+                  <li><a href="#">Corporate Entertainment</a>
+                    <ul class="second-ul">
+                      <li><a href="#">After Dinner Shows</a></li>
+                              <li><a href="#">Background Music</a></li>
+                              <li><a href="#">Comperes, Event Hosts & Speakers</a></li>
+                              <li><a href="#">Cutting Edge Entertainment</a></li>
+                              <li><a href="#">Dance The Night Away</a></li>
+                              <li><a href="#">Exhibitions</a></li>
+                            </ul>
+                      </li>
+                          <li><a href="#">Special Events</a>
+                  <ul class="second-ul">
+              
+                          <li><a href="#">Children's Entertainment</a></li>
+                          <li><a href="#">Entertainers for advertising</a></li>
+                          <li><a href="#">Exclusive VIP parties</a></li>
+                          <li><a href="#">Family Shows for Malls</a></li>
+                          <li><a href="#">Footfall Drivers</a></li>
+                        </ul>
+                  </li>
+                  <li><a href="#">Wedding Entertainment</a>
+                  <ul class="second-ul">
+                      <li><a href="#">Ceremony Music</a></li>
+                      <li><a href="#">Drinks Reception</a></li>
+                      <li><a href="#">Evening Party</a></li>
+                  </ul>
+                  </li>               
+                          
+                  </ul>
+              </li>
+              <li class="col-sm-5">
+                <ul class="pop-listing">
+                  <li class="dropdown-header">POPULAR</li>
+                  <li>
+                    <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
+                      <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
+                      <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
+                      <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="field-content"> <a href="/page/vertical-sport-performance-team"><img src="https://www.scarlettentertainment.com/sites/default/files/styles/196x198/public/Vertical-Sport-Performance-Team-%5BMain%5D.jpg?itok=zJOQjsua" alt="" title=""></a>
+                      <div class="views-field views-field-title"> <span class="field-content"><a href="/page/vertical-sport-performance-team">Vertical Sport Performance Team</a></span> </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </li>
+            </ul>
+                    </li>		  
+                  </ul>
+                </div>
+              </div>
             </nav>
             <!-- END OF/. NAVIGATION -->
         </header>
@@ -378,7 +338,7 @@
                         <ul class="menu-services">
                             <li><a href="#">terms & conditions</a></li>
                             <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">sitemape</a></li>
+                            <li><a href="/sitemap.xml" target="_blank">Site map</a></li>
                             <li><a href="#">Cookie Policy</a></li>
                         </ul>
                     </div>
@@ -415,6 +375,41 @@
             </div>
         </div>
 
-  
+        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+     <!--  <script src="/js/RYPP.js"></script>-->
+                   
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery-ui.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/theia-sticky-sidebar.js"></script>
+        <script src="/js/skycons.js"></script>
+        <script src="/owl-carousel/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="/js/jquery.menu-aim.js"></script> 
+        <script src="js/jquery.lightbox.js"></script>  
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+        
+        <script src="/modules/app.js"></script>
+        <script src="/modules/partentertainment/partentertainmentCtrl.js"></script>
+        <script src="/modules/partentertainment/partentertainmentService.js"></script>
+        <script src="/modules/entertainment/entertainmentCtrl.js"></script>
+        <script src="/modules/entertainment/entertainmentService.js"></script>
+        <script src="/modules/contactus/contactusCtrl.js"></script>
+        <script src="/modules/contactus/contactusService.js"></script>
+        <script src="/modules/signup/signupCtrl.js"></script>
+        <script src="/modules/signup/signupService.js"></script>
+        <script src="/modules/home/homeCtrl.js"></script>
+        <script src="/modules/home/homeService.js"></script>
+        <script src="/modules/category/categoryCtrl.js"></script>
+        <script src="/modules/category/categoryService.js"></script>
+        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+        <!-- <script>
+          $( "#Category" ).on( "click", "ul li ul li ul li a", function() {
+         //   $('#Category ul').hide();
+          });
+         </script> -->
  </body>
+ 
 </html>

@@ -4,8 +4,8 @@ app.controller('entertainmentCtrl',['$scope','$timeout', 'entertainmentService',
 
       function format ( d ) {
         // `d` is the original data object for the row
-        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-            '<tr>'+
+        return '<table cellpadding="5" cellspacing="0" border="0" style="max-width:100%;padding-left:50px;">'+
+            '<tr >'+
                 '<td>profileimage:</td>'+
                 '<td>'+d.profileimage+'</td>'+
             '</tr>'+
@@ -144,6 +144,11 @@ app.controller('entertainmentCtrl',['$scope','$timeout', 'entertainmentService',
             ],
              "scrollX": true,
              "pageLength": 10,
+             'processing': true,
+             'language': {
+                 'loadingRecords': '&nbsp;',
+                 "processing": '<div class="loader"></div>'
+             },
             "ajax": "/api/entertainment/getsAll",
             columnDefs: [
               { "width": "20px", "targets": '0' } 
